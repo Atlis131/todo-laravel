@@ -17,26 +17,32 @@
                 @csrf
 
                 <div class="mb-3">
-                    <label for="inputName" class="form-label"><strong>Title:</strong></label>
-                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
-                           id="inputName" placeholder="Title">
+                    <label for="inputTitle" class="form-label">
+                        <span style="font-weight: bold">Title:</span>
+                    </label>
+                    <input required type="text" name="title" class="form-control @error('title') is-invalid @enderror"
+                           id="inputTitle" placeholder="Title">
                     @error('title')
                     <div class="form-text text-danger">{{ $message }}</div>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label for="inputDetail" class="form-label"><strong>Description:</strong></label>
-                    <textarea class="form-control @error('description') is-invalid @enderror" style="height:150px"
-                              name="description" id="inputDetail" placeholder="Description"></textarea>
+                    <label for="inputDescription" class="form-label">
+                        <span style="font-weight: bold">Description:</span>
+                    </label>
+                    <textarea class="form-control @error('description') is-invalid @enderror" style="height:120px"
+                              name="description" id="inputDescription" placeholder="Description"></textarea>
                     @error('description')
                     <div class="form-text text-danger">{{ $message }}</div>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label for="inputDetail" class="form-label"><strong>Status:</strong></label>
-                    <select class="form-control @error('status') is-invalid @enderror" name="status" id="inputDetail">
+                    <label for="inputStatus" class="form-label">
+                        <span style="font-weight: bold">Status:</span>
+                    </label>
+                    <select class="form-control @error('status') is-invalid @enderror" name="status" id="inputStatus">
                         <option value="1">To Do</option>
                         <option value="2">In Progress</option>
                         <option value="3">Done</option>
@@ -47,9 +53,11 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="inputDetail" class="form-label"><strong>Priority:</strong></label>
+                    <label for="inputPriority" class="form-label">
+                        <span style="font-weight: bold">Priority:</span>
+                    </label>
                     <select class="form-control @error('priority') is-invalid @enderror" name="priority"
-                            id="inputDetail">
+                            id="inputPriority">
                         <option value="1">Low</option>
                         <option value="2">Medium</option>
                         <option value="3">High</option>
@@ -60,9 +68,11 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="inputDetail" class="form-label"><strong>Due:</strong></label>
-                    <input type="date" class="form-control @error('due') is-invalid @enderror" name="due"
-                           id="inputDetail">
+                    <label for="inputDue" class="form-label">
+                        <span style="font-weight: bold">Due:</span>
+                    </label>
+                    <input required type="date" class="form-control @error('due') is-invalid @enderror" name="due"
+                           id="inputDue">
                     @error('due')
                     <div class="form-text text-danger">{{ $message }}</div>
                     @enderror

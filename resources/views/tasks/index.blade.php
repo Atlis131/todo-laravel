@@ -20,7 +20,7 @@
 
         </header>
 
-        <div class="bg-light rounded-3">
+        <div class="rounded-3">
             <div class="container-fluid">
 
                 @session('success')
