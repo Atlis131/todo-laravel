@@ -36,6 +36,87 @@
     </div>
 
     <div class="card mt-5">
+        <div class="card-body">
+            <form action="{{ route('tasks.index') }}" method="POST">
+                @csrf
+                @method('GET')
+
+                <div class="mb-3">
+                    <label for="inputStatus" class="form-label">
+                        <span style="font-weight: bold">Status:</span>
+                    </label>
+                    <select class="form-control" name="status" id="inputStatus">
+                        <option
+                            @if ($request['status'] == 0)
+                                selected
+                            @endif
+                            value="0">All</option>
+                        <option
+                            @if ($request['status'] == 1)
+                                selected
+                            @endif
+                            value="1">To Do</option>
+                        <option
+                            @if ($request['status'] == 2)
+                                selected
+                            @endif
+                            value="2">In Progress</option>
+                        <option
+                            @if ($request['status'] == 3)
+                                selected
+                            @endif
+                            value="3">Done</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputPriority" class="form-label">
+                        <span style="font-weight: bold">Priority:</span>
+                    </label>
+                    <select class="form-control" name="priority" id="inputPriority">
+                        <option
+                            @if ($request['priority'] == 0)
+                                selected
+                            @endif
+                            value="0">All</option>
+                        <option
+                            @if ($request['priority'] == 1)
+                                selected
+                            @endif
+                            value="1">Low</option>
+                        <option
+                            @if ($request['priority'] == 2)
+                                selected
+                            @endif
+                            value="2">Medium</option>
+                        <option
+                            @if ($request['priority'] == 3)
+                                selected
+                            @endif
+                            value="3">High</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputDue" class="form-label">
+                        <span style="font-weight: bold">Due:</span>
+                    </label>
+                    <input type="date" class="form-control" name="due"
+                           id="inputDue" value="{{ $request['due'] }}">
+                </div>
+                <button type="submit" class="btn btn-success">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Filter
+                </button>
+                <a class="btn btn-danger" href="{{ route('tasks.index') }}">
+                    <i class="fa-solid fa-clear"></i>
+                    Clear Filters
+                </a>
+            </form>
+        </div>
+    </div>
+
+    <div class="card mt-5">
         <h2 class="card-header">ToDo List</h2>
         <div class="card-body">
 

@@ -8,23 +8,41 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use App\Http\Requests\TaskStoreRequest;
 use App\Http\Requests\TaskUpdateRequest;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): View|RedirectResponse
+    public function index(Request $request): View|RedirectResponse
     {
         if (!Auth::check()) {
-            return redirect("login")->withSuccess('Access denied');
+            return redirect("login");
         }
 
         $userId = Auth::id();
+        $post = $request->post();
 
-        $tasks = Task::where('user_id', $userId)->paginate(5);
+        $tasks = Task::where('user_id', $userId);
 
-        return view('tasks.index', compact('tasks'))
+        if (!empty($post)) {
+            if ($post['status'] > 0) {
+                $tasks = $tasks->where('status', $post['status']);
+            }
+
+            if ($post['priority'] > 0) {
+                $tasks = $tasks->where('priority', $post['priority']);
+            }
+
+            if (!is_null($post['due'])) {
+                $tasks = $tasks->where('due', $post['due']);
+            }
+        }
+
+        $tasks = $tasks->paginate(5);
+
+        return view('tasks.index', compact('tasks'), compact('request'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
