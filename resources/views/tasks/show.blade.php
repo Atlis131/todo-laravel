@@ -6,7 +6,7 @@
         <h2 class="card-header">Show Task</h2>
         <div class="card-body">
 
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <div class="d-grid gap-2 d-md-flex">
                 <a class="btn btn-primary btn-sm" href="{{ route('tasks.index') }}"><i class="fa fa-arrow-left"></i>
                     Back</a>
             </div>
