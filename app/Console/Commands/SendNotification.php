@@ -42,8 +42,5 @@ class SendNotification extends Command
 
             Mail::to($user->email)->send(new TaskNotification($user, $task));
         }
-
-        die();
-
     }
 }
